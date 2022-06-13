@@ -1,0 +1,28 @@
+body {
+    background-color: #ecd6c0;
+    color: white;
+       
+}
+
+.navbar {
+    background-color: #d8af97;   
+    color: white;
+}
+
+
+.navbar ul {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    color: white;
+ }
+
+ .nav-link{
+    
+    color: white;
+  }
+
+  #navcol a {
+      color: #5b3c28;
+      cursor: pointer;
+  }
