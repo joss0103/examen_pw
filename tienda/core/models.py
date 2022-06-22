@@ -28,15 +28,6 @@ class cliente (models.Model):
     def __str__(self):
         return self.nombre
 
-class Venta(models.Model):
-    idventa= models.AutoField(primary_key=True)
-    valortotal = models.ForeignKey(Pedido,on_delete=models.PROTECT)
-    fecha = models.DateTimeField(default=timezone.now)
-    pedido = models.ForeignKey(Pedido, on_delete=models.PROTECT)
-
-
-    def __str__(self):
-        return self.cliente
 
 class Comuna(models.Model):
     idComuna = models.AutoField(primary_key=True)
@@ -86,7 +77,6 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre_producto
 
-
 class Pedido(models.Model):
     idpedido = models.AutoField(primary_key=True)
     forma_pago = models.BooleanField(verbose_name='FORMA PAGO: ')
@@ -97,13 +87,23 @@ class Pedido(models.Model):
     nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT)
     telefono = models.ForeignKey(Despacho, on_delete=models.PROTECT)
     producto = models.ManyToManyField(Producto)
-    fecha = models.ForeignKey(Venta, on_delete=models.PROTECT)
+    fecha = models.DateTimeField(default=timezone.now)
     cantidad = models.IntegerField(max_length=25, verbose_name='CANTIDAD: ')
     valor_total = models.IntegerField(max_length=25, verbose_name='VALOR TOTAL: ')
  
 
     def __str__(self):
         return self.idpedido
+
+class Venta(models.Model):
+    idventa= models.AutoField(primary_key=True)
+    valortotal = models.ForeignKey(Pedido,on_delete=models.PROTECT)
+    fecha = models.ForeignKey(Pedido, on_delete=models.PROTECT)
+    pedido = models.ForeignKey(Pedido, on_delete=models.PROTECT)
+
+
+    def __str__(self):
+        return self.cliente
 
 class Contacto(models.Model):
     idcontacto = models.AutoField(primary_key=True)
@@ -113,5 +113,6 @@ class Contacto(models.Model):
 
     def __str__(self):
         return self.nombre
+
 
 
