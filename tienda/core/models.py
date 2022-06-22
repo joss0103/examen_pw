@@ -4,10 +4,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import CharField
 from django.utils import timezone
+
 # Create your models here.
 class Categoria(models.Model):
     id_Categoria = models.AutoField(primary_key=True, verbose_name='ID CATEGORIA:')
-    categoria = models.CharField(default='NombreCategoria', max_length=25, verbose_name='CATEGORIA: ')
+    categoria = models.CharField( max_length=25, verbose_name='CATEGORIA: ')
 
     def __str__(self):
         return self.categoria
@@ -22,11 +23,53 @@ class cliente (models.Model):
     nombre=  models.CharField (max_length=50, verbose_name= 'NOMBRE: ')
     telefono = models.CharField(max_length=12, verbose_name='TELEFONO: ')
     correo= models.EmailField (max_length=80, verbose_name='CORREO ELECTRONICO: ' )
-    suscripcion= models.BooleanField
+    suscripcion= models.BooleanField()
+
+    def __str__(self):
+        return self.nombre
+
+class Venta(models.Model):
+    idventa= models.AutoField(primary_key=True)
+    valortotal = models.ForeignKey(Pedido,on_delete=models.PROTECT)
+    fecha = models.DateTimeField(default=timezone.now)
+    pedido = models.ForeignKey(Pedido, on_delete=models.PROTECT)
+
+
+    def __str__(self):
+        return self.cliente
+
+class Comuna(models.Model):
+    idComuna = models.AutoField(primary_key=True)
+    nombreComuna = models.CharField(max_length=20, verbose_name='NOMBRE COMUNA: ' )
+
+    def __str__(self):
+        return self.nombreComuna
+
+class Region(models.Model):
+    idRegion = models.AutoField(primary_key=True)
+    nombreRegion = models.CharField(max_length=20, verbose_name='NOMBRE REGION: ')
+
+    def __str__(self):
+        return self.nombreRegion
+
+
+class Despacho(models.Model):
+    idDespacho = models.AutoField(primary_key=True)
+    nombreDespacho = models.CharField(max_length=25, verbose_name='NOMBRE RECEPTOR: ')
+    direccionDespacho = models.CharField(max_length=25, verbose_name='DIRECCIÓN DESPACHO: ')
+    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT)
+    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT)
+    telefono = models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.idDespacho        
 
 class usuario(models.Model):
     usuario =  models.AutoField(primary_key=True, verbose_name='USUARIO: ')
     contrasenia= models.CharField(max_length=15, verbose_name='CONTRASENIA: ')
+
+    def __str__(self):
+        return self.usuario
 
 class Producto(models.Model):
     idproducto = models.AutoField(primary_key=True, verbose_name='ID PRODUCTO:')
@@ -46,34 +89,29 @@ class Producto(models.Model):
 
 class Pedido(models.Model):
     idpedido = models.AutoField(primary_key=True)
-    despacho= models.BooleanField()
-    forma_pago = models.BooleanField()
-    pedido_aceptado = models.BooleanField()
-    direccion_despacho = models.CharField(max_length=70)
-    numero_direccion = models.IntegerField()   
+    forma_pago = models.BooleanField(verbose_name='FORMA PAGO: ')
+    estado_pedido = models.CharField( max_length=25, verbose_name='ESTADO PEDIDO: ')
+    nombreDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT)
+    direccionDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT)
+    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT)
+    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT)
+    telefono = models.ForeignKey(Despacho, on_delete=models.PROTECT)
     producto = models.ManyToManyField(Producto)
+    fecha = models.ForeignKey(Venta, on_delete=models.PROTECT)
+    cantidad = models.IntegerField(max_length=25, verbose_name='CANTIDAD: ')
+    valor_total = models.IntegerField(max_length=25, verbose_name='VALOR TOTAL: ')
  
 
     def __str__(self):
-        return self.num_pedido
+        return self.idpedido
 
 class Contacto(models.Model):
-    idcontacto = models.IntegerField(primary_key=True, max_length=20)
-    nombre = models.CharField(max_length=25)
-    email = models.CharField(max_length=35)
+    idcontacto = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=25, verbose_name='NOMBRE: ')
+    email = models.CharField(max_length=35, verbose_name='EMAIL: ')
     consulta = models.TextField()
 
     def __str__(self):
         return self.nombre
 
-
-class Venta(models.Model):
-    idventa= models.IntegerField(primary_key=True, max_length=25)
-    valor = models.IntegerField()
-    fecha = models.DateTimeField(default=timezone.now)
-    pedido = models.ForeignKey(Pedido, on_delete=models.PROTECT, related_name='pedidoVenta')
-
-
-    def __str__(self):
-        return self.cliente
 
