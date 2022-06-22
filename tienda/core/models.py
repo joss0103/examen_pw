@@ -19,7 +19,7 @@ class SubCategoria(models.Model):
 
 
 class cliente (models.Model):
-    rut = models.CharField(primary_key=True, verbose_name= 'RUT: ')
+    rut = models.CharField(primary_key=True, max_length=12, verbose_name= 'RUT: ')
     nombre=  models.CharField (max_length=50, verbose_name= 'NOMBRE: ')
     telefono = models.CharField(max_length=12, verbose_name='TELEFONO: ')
     correo= models.EmailField (max_length=80, verbose_name='CORREO ELECTRONICO: ' )
@@ -48,8 +48,8 @@ class Despacho(models.Model):
     idDespacho = models.AutoField(primary_key=True)
     nombreDespacho = models.CharField(max_length=25, verbose_name='NOMBRE RECEPTOR: ')
     direccionDespacho = models.CharField(max_length=25, verbose_name='DIRECCIÓN DESPACHO: ')
-    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT)
-    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT)
+    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT, related_name='nombre_comuna')
+    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT, related_name='nombre_region')
     telefono = models.CharField(max_length=25)
 
     def __str__(self):
@@ -66,13 +66,13 @@ class Producto(models.Model):
     idproducto = models.AutoField(primary_key=True, verbose_name='ID PRODUCTO:')
     nombre_producto = models.CharField(max_length=30, verbose_name= 'NOMBRE PRODUCTO: ')
     descripcion = models.TextField(max_length=200, verbose_name='DESCRIPCION: ')
-    valor = models.IntegerField(max_length=10, verbose_name='VALOR: ')
-    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
-    subcategoria=models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
+    valor = models.IntegerField(verbose_name='VALOR: ')
+    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name='categoria_produ')
+    subcategoria=models.ForeignKey(SubCategoria, on_delete=models.PROTECT, related_name='subcate_produ')
     imagen = models.ImageField(upload_to="productos", null=True)
     valor_oferta = models.IntegerField(blank=True, null=True, verbose_name='VALOR OFERTA: ')
     oferta = models.BooleanField(max_length= 10, verbose_name='OFERTA: ')
-    stock = models.IntegerField(max_length= 100, verbose_name= 'STOCK: ')
+    stock = models.IntegerField( verbose_name= 'STOCK: ')
 
     def __str__(self):
         return self.nombre_producto
@@ -81,15 +81,15 @@ class Pedido(models.Model):
     idpedido = models.AutoField(primary_key=True)
     forma_pago = models.BooleanField(verbose_name='FORMA PAGO: ')
     estado_pedido = models.CharField( max_length=25, verbose_name='ESTADO PEDIDO: ')
-    nombreDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT)
-    direccionDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT)
-    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT)
-    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT)
-    telefono = models.ForeignKey(Despacho, on_delete=models.PROTECT)
+    nombreDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT, related_name='nombre_despacho')
+    direccionDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT, related_name='direccion_despacho')
+    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT, related_name='nombre_comuna')
+    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT, related_name='nombre_region')
+    telefono = models.ForeignKey(Despacho, on_delete=models.PROTECT, related_name='tel')
     producto = models.ManyToManyField(Producto)
     fecha = models.DateTimeField(default=timezone.now)
-    cantidad = models.IntegerField(max_length=25, verbose_name='CANTIDAD: ')
-    valor_total = models.IntegerField(max_length=25, verbose_name='VALOR TOTAL: ')
+    cantidad = models.IntegerField(verbose_name='CANTIDAD: ')
+    valor_total = models.IntegerField(verbose_name='VALOR TOTAL: ')
  
 
     def __str__(self):
@@ -97,9 +97,9 @@ class Pedido(models.Model):
 
 class Venta(models.Model):
     idventa= models.AutoField(primary_key=True)
-    valortotal = models.ForeignKey(Pedido,on_delete=models.PROTECT)
-    fecha = models.ForeignKey(Pedido, on_delete=models.PROTECT)
-    pedido = models.ForeignKey(Pedido, on_delete=models.PROTECT)
+    valortotal = models.ForeignKey(Pedido,on_delete=models.PROTECT, related_name='valor_total')
+    fecha = models.ForeignKey(Pedido, on_delete=models.PROTECT, related_name='fecha_ven')
+    pedido = models.ForeignKey(Pedido, on_delete=models.PROTECT, related_name='pedido_ven')
 
 
     def __str__(self):
