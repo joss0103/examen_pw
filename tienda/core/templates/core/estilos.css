@@ -1,11 +1,12 @@
+
 body {
-    background-color: #ecd6c0;
-    color: white;
+    background-color: #add5fa;
+
        
 }
 
 .navbar {
-    background-color: #d8af97;   
+    background-color: #95b8f6;   
     color: white;
 }
 
@@ -23,6 +24,6 @@ body {
   }
 
   #navcol a {
-      color: #5b3c28;
+      color: black;
       cursor: pointer;
   }

@@ -49,7 +49,7 @@ class Despacho(models.Model):
     nombreDespacho = models.CharField(max_length=25, verbose_name='NOMBRE RECEPTOR: ')
     direccionDespacho = models.CharField(max_length=25, verbose_name='DIRECCIÓN DESPACHO: ')
     nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT, related_name='nombre_comuna')
-    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT, related_name='nombre_region')
+    nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT, related_name='nombre_region_d')
     telefono = models.CharField(max_length=25)
 
     def __str__(self):
@@ -83,7 +83,7 @@ class Pedido(models.Model):
     estado_pedido = models.CharField( max_length=25, verbose_name='ESTADO PEDIDO: ')
     nombreDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT, related_name='nombre_despacho')
     direccionDespacho = models.ForeignKey(Despacho, on_delete=models.PROTECT, related_name='direccion_despacho')
-    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT, related_name='nombre_comuna')
+    nombreComuna = models.ForeignKey(Comuna, on_delete=models.PROTECT, related_name='nombre_comuna_p')
     nombreRegion=models.ForeignKey(Region, on_delete=models.PROTECT, related_name='nombre_region')
     telefono = models.ForeignKey(Despacho, on_delete=models.PROTECT, related_name='tel')
     producto = models.ManyToManyField(Producto)
@@ -97,7 +97,7 @@ class Pedido(models.Model):
 
 class Venta(models.Model):
     idventa= models.AutoField(primary_key=True)
-    valortotal = models.ForeignKey(Pedido,on_delete=models.PROTECT, related_name='valor_total')
+    valortotal = models.ForeignKey(Pedido,on_delete=models.PROTECT, related_name='valor_total_ven')
     fecha = models.ForeignKey(Pedido, on_delete=models.PROTECT, related_name='fecha_ven')
     pedido = models.ForeignKey(Pedido, on_delete=models.PROTECT, related_name='pedido_ven')
 
