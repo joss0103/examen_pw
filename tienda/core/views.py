@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
 from .forms import FormsProducto
 
@@ -28,4 +28,22 @@ def crearp(request):
         else:
             data["form"] = formulario
     return render(request, 'core/crearproducto.html', data)
+
+def edit_product(request, id):
+
+    productos = get_object_or_404(Producto, idproducto=id)
+
+    data = {
+        'form': FormsProducto(instance=productos)
+    }
+
+    if request.method == 'POST':
+        formulario = FormsProducto(data=request.POST, instance=productos, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="home")
+        data["form"] = formulario
+            
+
+    return render(request, 'core/actualizar.html', data)
 
