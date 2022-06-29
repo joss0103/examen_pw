@@ -58,7 +58,7 @@ class Despacho(models.Model):
 class usuario(models.Model):
     usuario =  models.AutoField(primary_key=True, verbose_name='USUARIO: ')
     contrasenia= models.CharField(max_length=15, verbose_name='CONTRASENIA: ')
-
+    
     def __str__(self):
         return self.usuario
 
