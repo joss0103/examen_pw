@@ -36,13 +36,24 @@
         <div class="fas fa-bars" id="menu-btn"></div>
         <div class="fas fa-search" id="search-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
-         {% if user.is_authenticated %}
-        <div class="fas fa-user" id="login-btn">
-            <a href="/">{{user.username}}</a>
-        </div>
+            <ul>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+                    
+                </li>
+                {% else %}
 
-        {% endif %}
-    </div>
+                <li>
+                    <a href="{% url 'login' %}"> Iniciar Sesión</a>
+                </li>
+                <li>
+                    <a href="{% url 'registro' %}">Registro</a>
+                </li>
+                {% endif %}
+             </ul>
+         </div>
+         
 
     <form action="" class="search-form">
         <input type="search" id="search-box" placeholder="Más información...">
