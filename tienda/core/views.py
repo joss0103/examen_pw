@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Producto
+from .forms import FormsProducto
 
 # Create your views here.
 def home(request):
@@ -15,5 +16,16 @@ def productos(request):
 
 
 def crearp(request):
-    return render(request, 'core/crearproducto.html')
+    data = {
+        'form': FormsProducto()
+    }
+
+    if request.method == 'POST':
+        formulario = FormsProducto(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            
+        else:
+            data["form"] = formulario
+    return render(request, 'core/crearproducto.html', data)
 
