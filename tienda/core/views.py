@@ -46,6 +46,7 @@ def edit_product(request, id):
             
 
     return render(request, 'core/actualizar.html', data)
+<<<<<<< Updated upstream
 
 def contacto(request):
     return render(request,'core/contacto.html')
@@ -53,3 +54,5 @@ def contacto(request):
 
 def perfil(request):
     return render(request,'core/perfil.html')
+=======
+>>>>>>> Stashed changes

@@ -6,6 +6,10 @@ urlpatterns = [
      path('productos/', productos,name="productos"),
      path('crear/', crearp, name="crearp" ),
      path('actualizar/<id>/', edit_product, name="edit_product"), 
+<<<<<<< Updated upstream
      path('contacto/', contacto, name="contacto"), 
      path('perfil/', perfil, name="perfil"),
+=======
+ 
+>>>>>>> Stashed changes
 ]
