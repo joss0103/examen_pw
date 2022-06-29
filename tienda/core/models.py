@@ -17,6 +17,8 @@ class SubCategoria(models.Model):
     idSubcategoria = models.AutoField(primary_key=True, verbose_name='ID SUBCATEGORIA:')
     subCategoria= models.CharField(max_length=50, verbose_name='SUBCATEGORIA: ')
 
+    def __str__(self):
+        return self.subCategoria
 
 class cliente (models.Model):
     rut = models.CharField(primary_key=True, max_length=12, verbose_name= 'RUT: ')
@@ -55,12 +57,7 @@ class Despacho(models.Model):
     def __str__(self):
         return self.idDespacho        
 
-class usuario(models.Model):
-    usuario =  models.AutoField(primary_key=True, verbose_name='USUARIO: ')
-    contrasenia= models.CharField(max_length=15, verbose_name='CONTRASENIA: ')
-    
-    def __str__(self):
-        return self.usuario
+
 
 class Producto(models.Model):
     idproducto = models.AutoField(primary_key=True, verbose_name='ID PRODUCTO:')
