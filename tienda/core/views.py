@@ -47,3 +47,9 @@ def edit_product(request, id):
 
     return render(request, 'core/actualizar.html', data)
 
+def contacto(request):
+    return render(request,'core/contacto.html')
+
+
+def perfil(request):
+    return render(request,'core/perfil.html')
