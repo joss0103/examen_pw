@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complete Responsive Grocery Website Design Tutorial</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'https://unpkg.com/swiper@7/swiper-bundle.min.css' %}" />
 
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' %}">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 
 </head>
 <body>
@@ -48,7 +48,7 @@
     <div class="shopping-cart">
         <div class="box">
             <i class="fas fa-trash"></i>
-            <img src="{% static 'image/cart-img-1.png' %}" alt="">
+            <img src="{% static 'core/image/cart-img-1.png' %}" alt="">
             <div class="content">
                 <h3>watermelon</h3>
                 <span class="price">$4.99/-</span>
@@ -57,7 +57,7 @@
         </div>
         <div class="box">
             <i class="fas fa-trash"></i>
-            <img src="{% static 'image/cart-img-2.png' %}" alt="">
+            <img src="{% static 'core/image/cart-img-2.png' %}" alt="">
             <div class="content">
                 <h3>onion</h3>
                 <span class="price">$4.99/-</span>
@@ -66,7 +66,7 @@
         </div>
         <div class="box">
             <i class="fas fa-trash"></i>
-            <img src="{% static 'image/cart-img-3.png' %}" alt="">
+            <img src="{% static 'core/image/cart-img-3.png' %}" alt="">
             <div class="content">
                 <h3>chicken</h3>
                 <span class="price">$4.99/-</span>
@@ -113,21 +113,21 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="{% static 'image/feature-img-1.png' %}" alt="">
+            <img src="{% static 'core/image/feature-img-1.png' %}" alt="">
             <h3>fresh and organic</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
             <a href="#" class="btn">read more</a>
         </div>
 
         <div class="box">
-            <img src="{% static 'image/feature-img-2.png' %}" alt="">
+            <img src="{% static 'core/image/feature-img-2.png' %}" alt="">
             <h3>free delivery</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
             <a href="#" class="btn">read more</a>
         </div>
 
         <div class="box">
-            <img src="{% static 'image/feature-img-3.png' %}" alt="">
+            <img src="{% static 'core/image/feature-img-3.png' %}" alt="">
             <h3>easy payments</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
             <a href="#" class="btn">read more</a>
@@ -150,7 +150,7 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-1.png' %}" alt="">
+                <img src="{% static 'core/image/product-1.png' %}" alt="">
                 <h3>fresh orange</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -164,7 +164,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-2.png' %}" alt="">
+                <img src="{% static 'core/image/product-2.png' %}" alt="">
                 <h3>fresh onion</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -178,7 +178,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-3.png' %}" alt="">
+                <img src="{% static 'core/image/product-3.png' %}" alt="">
                 <h3>fresh meat</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -192,7 +192,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-4.png' %}" alt="">
+                <img src="{% static 'core/image/product-4.png' %}" alt="">
                 <h3>fresh cabbage</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -214,7 +214,7 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-5.png' %}" alt="">
+                <img src="{% static 'core/image/product-5.png' %}" alt="">
                 <h3>fresh potato</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -228,7 +228,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-6.png' %}" alt="">
+                <img src="{% static 'core/image/product-6.png' %}" alt="">
                 <h3>fresh avocado</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -242,7 +242,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-7.png' %}" alt="">
+                <img src="{% static 'core/image/product-7.png' %}" alt="">
                 <h3>fresh carrot</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -256,7 +256,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/product-8.png' %}" alt="">
+                <img src="{% static 'core/image/product-8.png' %}" alt="">
                 <h3>green lemon</h3>
                 <div class="price"> $4.99/- - 10.99/- </div>
                 <div class="stars">
@@ -287,28 +287,28 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="{% static 'image/cat-1.png' %}" alt="">
+            <img src="{% static 'core/image/cat-1.png' %}" alt="">
             <h3>vegitables</h3>
             <p>upto 45% off</p>
             <a href="#" class="btn">shop now</a>
         </div>
 
         <div class="box">
-            <img src="{% static 'image/cat-2.png' %}" alt="">
+            <img src="{% static 'core/image/cat-2.png' %}" alt="">
             <h3>fresh fruits</h3>
             <p>upto 45% off</p>
             <a href="#" class="btn">shop now</a>
         </div>
 
         <div class="box">
-            <img src="{% static 'image/cat-3.png' %}" alt="">
+            <img src="{% static 'core/image/cat-3.png' %}" alt="">
             <h3>dairy products</h3>
             <p>upto 45% off</p>
             <a href="#" class="btn">shop now</a>
         </div>
 
         <div class="box">
-            <img src="{% static 'image/cat-4.png' %}" alt="">
+            <img src="{% static 'core/image/cat-4.png' %}" alt="">
             <h3>fresh meat</h3>
             <p>upto 45% off</p>
             <a href="#" class="btn">shop now</a>
@@ -331,7 +331,7 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/pic-1.png' %}" alt="">
+                <img src="{% static 'core/image/pic-1.png' %}" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
                 <h3>john deo</h3>
                 <div class="stars">
@@ -344,7 +344,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/pic-2.png' %}" alt="">
+                <img src="{% static 'core/image/pic-2.png' %}" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
                 <h3>john deo</h3>
                 <div class="stars">
@@ -357,7 +357,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/pic-3.png' %}" alt="">
+                <img src="{% static 'core/image/pic-3.png' %}" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
                 <h3>john deo</h3>
                 <div class="stars">
@@ -370,7 +370,7 @@
             </div>
 
             <div class="swiper-slide box">
-                <img src="{% static 'image/pic-4.png' %}" alt="">
+                <img src="{% static 'core/image/pic-4.png' %}" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
                 <h3>john deo</h3>
                 <div class="stars">
@@ -399,7 +399,7 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="image/blog-1.jpg' %}" alt="">
+            <img src="{% static 'core/image/blog-1.jpg' %}" alt="">
             <div class="content">
                 <div class="icons">
                     <a href="#"> <i class="fas fa-user"></i> by user </a>
@@ -412,7 +412,7 @@
         </div>
 
         <div class="box">
-            <img src="{% static 'image/blog-2.jpg' %}" alt="">
+            <img src="{% static 'core/image/blog-2.jpg' %}" alt="">
             <div class="content">
                 <div class="icons">
                     <a href="#"> <i class="fas fa-user"></i> by user </a>
@@ -425,7 +425,7 @@
         </div>
 
         <div class="box">
-            <img src="{% static 'image/blog-3.jpg' %}" alt="">
+            <img src="{% static 'core/image/blog-3.jpg' %}" alt="">
             <div class="content">
                 <div class="icons">
                     <a href="#"> <i class="fas fa-user"></i> by user </a>
@@ -483,7 +483,7 @@
             <p>subscribe for latest updates</p>
             <input type="email" placeholder="your email" class="email">
             <input type="submit" value="subscribe" class="btn">
-            <img src="{% static 'image/payment.png' %}" class="payment-img" alt="">
+            <img src="{% static 'core/image/payment.png' %}" class="payment-img" alt="">
         </div>
 
     </div>
@@ -511,7 +511,7 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="{% static 'core/js/script.js' %}"></script>
 
 </body>
 </html>
