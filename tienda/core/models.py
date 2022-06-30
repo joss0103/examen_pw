@@ -26,15 +26,16 @@ class SubCategoria(models.Model):
 
 class Profile (models.Model):
     user= models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to='profiles', null = True, blank = True)
+    bio = models.TextField(null=True)
     rut = models.CharField(primary_key=True, max_length=12, verbose_name= 'RUT: ')
     nombre=  models.CharField (max_length=50, verbose_name= 'NOMBRE: ')
     telefono = models.CharField(max_length=12, verbose_name='TELEFONO: ')
     correo= models.EmailField (max_length=80, verbose_name='CORREO ELECTRONICO: ' )
-    suscripcion= models.BooleanField()
+    suscripcion= models.BooleanField(default = False)
+    
 
     def __str__(self):
-        return self.user.username
+        return self.user
 
 
 class Comuna(models.Model):

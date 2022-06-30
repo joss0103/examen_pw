@@ -4,7 +4,7 @@ from django.contrib import messages
 from urllib import request
 from django.shortcuts import render, redirect, get_object_or_404
 from .Carrito import Carrito
-from .models import Producto
+from .models import Producto, Profile
 from .forms import FormsProducto, CustomUserCreationForm, UpdateDespacho, UpdateProfileForm, UpdateUserForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -103,18 +103,21 @@ def registro(request):
 
 @login_required
 def profile(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=request.user)
     if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST, instance = request.user)
-        profile_form=UpdateProfileForm(request.POST, request.FILES, instance = request.user.profile)
-        #despacho_form = UpdateDespacho(request.POST, instance = request = request.user)
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, instance=request.user.profile)
 
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-           # despacho_form.save()
-            messages.success(request, 'Tu perfil se actualizó correctamente')
+            messages.success(request, 'Tu perfil se ha actualizado exitosamente')
             return redirect(to='users-profile')
-        else:
-            user_form = UpdateUserForm(instance=request.user)    
-            profile_form=UpdateProfileForm(instance=request.user.profile)
-        return render(request,'core/profile.html', {'user_form':user_form,'profile_form':profile_form})
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
+
+    return render(request, 'core/profile.html', {'user_form': user_form, 'profile_form': profile_form})
