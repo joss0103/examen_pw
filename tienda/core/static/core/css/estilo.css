@@ -1,0 +1,51 @@
+.bodyC{
+
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    
+  }
+  .formC{
+    width: 450px;
+    margin: auto;
+    background: rgba(0, 0, 0, .4);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 50px;
+    border-radius: 7px;
+  }
+  .h2C{
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .pC{
+    color: rgb(54, 54, 54);
+    font-size: 20px;
+  }
+  .inputC,.textareaC{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 7px;
+    box-sizing: border-box;
+    font-size: 17px;
+    border: none;
+    max-width: 100%
+  }
+  .textarea{
+    min-height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+  }
+  @media(max-width:480px){
+    .formC{
+      width: 100%;
+    }
+  
+      
+  }
+  
+  
+  

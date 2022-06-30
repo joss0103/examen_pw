@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
 
 :root{
@@ -59,6 +60,17 @@ section{
     border-radius: .5rem;
     border:.2rem solid var(--black);
     color:var(--black);
+    cursor: pointer;
+    background: none;
+}
+.btn-white{
+    margin-top: 1rem;
+    display: inline-block;
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    border:.2rem solid var(--orange);
+    color:#fff;
     cursor: pointer;
     background: none;
 }
@@ -277,7 +289,7 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(../image/banner-bg.webp) no-repeat;
+    background: url(/static/core/image/perro-banner.jpg) no-repeat;
     background-position: center;
     background-size: cover;
     padding-top: 17rem;
@@ -290,7 +302,7 @@ section{
 }
 
 .home .content h3{
-    color:var(--black);
+    color:#eee;
     font-size: 3rem;
 }
 
@@ -299,7 +311,7 @@ section{
 }
 
 .home .content p{
-    color:var(--light-color);
+    color:rgb(201, 201, 201);
     font-size: 1.7rem;
     padding:1rem 0;
     line-height: 1.8;
