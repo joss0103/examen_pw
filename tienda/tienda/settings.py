@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'crispy_forms',
+    'crispy_forms',    
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processor.total_carrito',
             ],
         },
     },
@@ -85,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'examenpw',
         'USER': 'root',
-        'PASSWORD': 'jungwon1',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3306',
 

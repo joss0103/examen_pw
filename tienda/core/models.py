@@ -1,9 +1,12 @@
 
+from __future__ import unicode_literals
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import CharField
 from django.utils import timezone
+
+
 
 # Create your models here.
 class Categoria(models.Model):
@@ -72,7 +75,7 @@ class Producto(models.Model):
     stock = models.IntegerField( verbose_name= 'STOCK: ')
 
     def __str__(self):
-        return self.nombre_producto
+        return f'{self.nombre_producto} -> {self.valor}'
 
 class Pedido(models.Model):
     idpedido = models.AutoField(primary_key=True)
@@ -110,6 +113,5 @@ class Contacto(models.Model):
 
     def __str__(self):
         return self.nombre
-
 
 
