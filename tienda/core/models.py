@@ -1,5 +1,6 @@
 
 from __future__ import unicode_literals
+from distutils.command.upload import upload
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import User
@@ -23,7 +24,9 @@ class SubCategoria(models.Model):
     def __str__(self):
         return self.subCategoria
 
-class cliente (models.Model):
+class Profile (models.Model):
+    user= models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to='profiles', null = True, blank = True)
     rut = models.CharField(primary_key=True, max_length=12, verbose_name= 'RUT: ')
     nombre=  models.CharField (max_length=50, verbose_name= 'NOMBRE: ')
     telefono = models.CharField(max_length=12, verbose_name='TELEFONO: ')
@@ -31,7 +34,7 @@ class cliente (models.Model):
     suscripcion= models.BooleanField()
 
     def __str__(self):
-        return self.nombre
+        return self.user.username
 
 
 class Comuna(models.Model):
