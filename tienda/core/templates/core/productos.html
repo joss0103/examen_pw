@@ -46,35 +46,11 @@
 
     <div class="shopping-cart">
         <div class="box">
-            <i class="fas fa-trash"></i>
-            <img src="{% static 'core/image/cart-img-1.png' %}" alt="">
-            <div class="content">
-                <h3>watermelon</h3>
-                <span class="price">$4.99/-</span>
-                <span class="quantity">qty : 1</span>
+            {% include "core/carrito.html" %}
+
             </div>
         </div>
-        <div class="box">
-            <i class="fas fa-trash"></i>
-            <img src="{% static 'core/image/cart-img-2.png' %}" alt="">
-            <div class="content">
-                <h3>onion</h3>
-                <span class="price">$4.99/-</span>
-                <span class="quantity">qty : 1</span>
-            </div>
-        </div>
-        <div class="box">
-            <i class="fas fa-trash"></i>
-            <img src="{% static 'core/image/cart-img-3.png' %}" alt="">
-            <div class="content">
-                <h3>chicken</h3>
-                <span class="price">$4.99/-</span>
-                <span class="quantity">qty : 1</span>
-            </div>
-        </div>
-        <div class="total"> total : $19.69/- </div>
-        <a href="#" class="btn">checkout</a>
-    </div>
+        
 
     <form action="" class="login-form">
         <h3>login now</h3>
@@ -97,21 +73,25 @@
 
     <h1 class="heading"> our <span>features</span> </h1>
 
-    <div class="box-container">
+    <div class="box-container" >
         
         {% for p in productos %}
         <div class="box">
             <img src="{{p.imagen.url}}" alt="">
             <h3>{{p.nombre_producto}}</h3>
             <p>{{p.valor}}</p>
-            <a href="#" class="btn">AGREGAR AL CARRITO</a>
+            <a href="{% url 'Add' p.idproducto  %}" class="btn">AGREGAR AL CARRITO</a>
         </div>
 
         {% endfor %}
 
+   
+  
         
 
     </div>
+
+
 
 </section>
 

@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
+from .Carrito import Carrito
 from .models import Producto
 from .forms import FormsProducto
+
 
 # Create your views here.
 def home(request):
@@ -13,6 +16,29 @@ def productos(request):
         'productos': productos
     }
     return render(request,'core/productos.html', data )
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idproducto=producto_id)    
+    carrito.agregar(producto)
+    return redirect("productos")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idproducto=producto_id)
+    carrito.eliminar(producto)
+    return redirect("productos")
+
+def restar_producto(request, producto_id):    
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idproducto=producto_id)
+    carrito.restar(producto)
+    return redirect("productos")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("productos")    
 
 
 def crearp(request):
